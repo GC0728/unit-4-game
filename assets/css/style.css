@@ -33,6 +33,27 @@
     height: 120px;
 }
 
+#styleUser {
+    padding: 100px;
+    background-color:yellow;
+    text-align:center;
+}
+
+#styleWin {
+    padding: 100px;
+    background-color:green;
+    text-align:center;
+}
+
 #moonstonePic{
     height: 120px;
+}
+
+.styleWinScore{
+    text-align:center;
+    font-size:20px;
+}
+
+#winStyler {
+    text-align:right;
 }
