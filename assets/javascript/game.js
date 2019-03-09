@@ -9,6 +9,7 @@ var sapphireCounter = 0;
 
 var userTotal = 0;
 
+
 // CODE FOR GEM VALUE GENERATOR 
 var amethystNum = Math.floor(Math.random() * 12) + 1;
 console.log(amethystNum);
@@ -22,34 +23,39 @@ console.log(moonstoneNum);
 var sapphireNum = Math.floor(Math.random() * 12) + 1;
 console.log(sapphireNum);
 
-var compNum = Math.floor(Math.random() * 120) + 19;
-console.log(compNum);
-
+// var compNum = Math.floor(Math.random() * 120) + 19;
+ console.log(compNum);
+function compNum(max) {
+  return Math.floor(Math.random() * Math.floor(121));
+};
+$("#winScore").html(compNum(" '<p> Winning Score </p>' " + 121));
+// WIN CONDITION SCORE
+$("#winScore").html(compNum);
 
 // BUTTONS
 // #id and button click works
 $("#amethystButton").click(function() {
-    var amethystTotal = (" " + amethystNum);
-    $("#userTally").html(amethystTotal);
+    userTotal += amethystNum;
+    $("#userTally").html(userTotal);
     
 //    wincheck();
 });
 
 $("#citrineButton").click(function() {
-    var citrineTotal = (" " + citrineNum);
-    $("#userTally").html(citrineTotal);
+    userTotal += citrineNum;
+    $("#userTally").html(userTotal);
  //   alert(citrineTotal);
 });
 
 $("#moonstoneButton").click(function() {
-    var moonstoneTotal = moonstoneNum + moonstoneCounter
-    $("#userTally").html(moonstoneTotal);
+    userTotal += moonstoneNum;
+    $("#userTally").html(userTotal);
  //   alert(moonstoneTotal);
 });
 
 $("#sapphireButton").click(function() {
-    var sapphireTotal = sapphireNum + sapphireCounter
-    $("#userTally").html(sapphireTotal);
+    userTotal += sapphireNum;
+    $("#userTally").html(userTotal);
   //  alert(sapphireTotal);
 });
 
@@ -74,8 +80,8 @@ console.log(compNum2);
 console.log(compNum); */
 
 // CONSOLE LOGS BOOLEAN
-var compNumLim = (compNum <= 120);
-console.log(compNumLim);
+// var compNumLim = (compNum <= 120);
+// console.log(compNumLim);
 
 var winsCounter = 0;
 var lossesCounter = 0;
