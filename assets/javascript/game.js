@@ -26,6 +26,7 @@ console.log(sapphireNum);
 // var compNum = Math.floor(Math.random() * 120) + 19;
  console.log(compNum);
 function compNum(max) {
+  var userWin = Math.floor(Math.random() * Math.floor(121));
   return Math.floor(Math.random() * Math.floor(121));
 };
 $("#winScore").html(compNum(" '<p> Winning Score </p>' " + 121));
