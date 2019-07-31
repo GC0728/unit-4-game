@@ -9,7 +9,6 @@ var lossesCounter = 0;
 const winCheck = [];
 
 
-
 // CODE FOR GEM VALUE GENERATOR 
 var amethystNum = Math.floor(Math.random() * 12) + 1;
 console.log(amethystNum);
@@ -23,68 +22,49 @@ console.log(moonstoneNum);
 var sapphireNum = Math.floor(Math.random() * 12) + 1;
 console.log(sapphireNum);
 
-// var compNum = Math.floor(Math.random() * 120) + 19;
-/* console.log(compNum);
- function compNum(max) {
-  var userWin = Math.floor(Math.random() * Math.floor(121));
-  return Math.floor(Math.random() * Math.floor(121));
-}; */
-
-var userWin = {
-    winNum: Math.floor(Math.random() * Math.floor(121)),
-};
+var winNum: Math.floor(Math.random() * Math.floor(121));
 console.log(userWin.winNum);
 var userWinCondition = userWin.winNum;
 console.log(userWinCondition);
 
+// Single function that accepts the random generated button click number
+function handleBtnClick(event) {
+    if (event.currentTarget.id === "amethystBtn") {
+        userTotal += amethystNum;
+        $("#userTally").text(userTotal);
+    }
+    if (event.currentTarget.id === "citrineBtn") {
+        userTotal += citrineNum;
+        $("#userTally").text(userTotal);
+    }
+    if (event.currentTarget.id === "moonstoneBtn") {
+        userTotal += moonstoneNum;
+        $("#userTally").text(userTotal);
+    }
+    if (event.currentTarget.id === "sapphireBtn") {
+        userTotal += sapphireNum;
+        $("#userTally").text(userTotal);
+    }
+};
 
-
+function checkWinCondition(userTotal, winNum) {
+    if (userTotal === winNum) {
+        winsCounter++
+    }
+    if (userTotal > winNum) {
+        lossesCounter++
+    }
+};
 // STARTS ALL OTHER EVENTS AND FUNCTIONS
 $(document).ready(function() {
 
-// $("#winScore").html(compNum(" '<p> Winning Score </p>' " + 121));
-$("#winScore").html(userWin.winNum);
-// BUTTONS
-// #id and button click works
-$("#amethystButton").click(function() {
-    var winCondition = userTotal += amethystNum;
-    $("#userTally").html(userTotal);
-    winCheck.push(winCondition);
-    const forTheWin = (accumulator, currentValue) => accumulator + currentValue;
-    console.log(winCheck.reduce(forTheWin));
-    var doYouWin = winCheck.reduce(forTheWin);
-//    wincheck();
-});
+$("#winScore").text(winNum);
 
-$("#citrineButton").click(function() {
-    userTotal += citrineNum;
-    $("#userTally").html(userTotal);
-    winCheck.push(winCondition);
-    const forTheWin = (accumulator, currentValue) => accumulator + currentValue;
-    console.log(winCheck.reduce(forTheWin));
-    var doYouWin = winCheck.reduce(forTheWin);
-});
+$("#amethystBtn").click(handleBtnClick);
+$("#citrineBtn").click(handleBtnClick);
+$("#moonstoneBtn").click(handleBtnClick);
+$("#sapphireBtn").click(handleBtnClick);
 
-$("#moonstoneButton").click(function() {
-    userTotal += moonstoneNum;
-    $("#userTally").html(userTotal);
-    winCheck.push(winCondition);
-    const forTheWin = (accumulator, currentValue) => accumulator + currentValue;
-    console.log(winCheck.reduce(forTheWin));
-    var doYouWin = winCheck.reduce(forTheWin);
-});
-
-$("#sapphireButton").click(function() {
-    userTotal += sapphireNum;
-    $("#userTally").html(userTotal);
-    winCheck.push(winCondition);
-    const forTheWin = (accumulator, currentValue) => accumulator + currentValue;
-    var doYouWin = winCheck.reduce(forTheWin);
-});
-
-//  **COULD NOT COMPLETE GAME WIN CONDITION LOGIC**
-    if (doYouWin === userWinCondition) {
-        alert("You suck!")
-    }
+checkWinCondition
 });
 
