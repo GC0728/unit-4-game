@@ -22,39 +22,58 @@ console.log(moonstoneNum);
 var sapphireNum = Math.floor(Math.random() * 12) + 1;
 console.log(sapphireNum);
 
-var winNum: Math.floor(Math.random() * Math.floor(121));
-console.log(userWin.winNum);
-var userWinCondition = userWin.winNum;
-console.log(userWinCondition);
+var winNum = Math.floor(Math.random() * Math.floor(121));
+console.log(winNum);
 
 // Single function that accepts the random generated button click number
 function handleBtnClick(event) {
     if (event.currentTarget.id === "amethystBtn") {
         userTotal += amethystNum;
         $("#userTally").text(userTotal);
+        checkWinCondition(userTotal, winNum);
     }
     if (event.currentTarget.id === "citrineBtn") {
         userTotal += citrineNum;
         $("#userTally").text(userTotal);
+        checkWinCondition(userTotal, winNum);
     }
     if (event.currentTarget.id === "moonstoneBtn") {
         userTotal += moonstoneNum;
         $("#userTally").text(userTotal);
+        checkWinCondition(userTotal, winNum);
     }
     if (event.currentTarget.id === "sapphireBtn") {
         userTotal += sapphireNum;
         $("#userTally").text(userTotal);
+        checkWinCondition(userTotal, winNum);
+    }
+
+};
+
+// Compare userScore to winNum for wins/losses counter
+// 08/01/2019: counters/reset userScore works, but dynamic text not updating on webpage
+function checkWinCondition(score, winningNum) {
+    if (score === winningNum) {
+        winsCounter += 1;
+        console.log(winsCounter);
+        userTotal = 0;
+        displayStats(winNum, winsCounter, lossesCounter);
+    }
+    if (score > winningNum) {
+        lossesCounter += 1;
+        console.log(lossesCounter);
+        userTotal = 0;
+        displayStats(winNum, winsCounter, lossesCounter);
     }
 };
 
-function checkWinCondition(userTotal, winNum) {
-    if (userTotal === winNum) {
-        winsCounter++
-    }
-    if (userTotal > winNum) {
-        lossesCounter++
-    }
-};
+// Function to for dynamic text updates
+function displayStats(num1, num2, num3) {
+    $("#winScore").text(num1);
+    $("#winStyler").text("Wins: " + num2);
+    $("#lossStyler").text("Losses: " + num3);
+}; 
+
 // STARTS ALL OTHER EVENTS AND FUNCTIONS
 $(document).ready(function() {
 
@@ -65,6 +84,5 @@ $("#citrineBtn").click(handleBtnClick);
 $("#moonstoneBtn").click(handleBtnClick);
 $("#sapphireBtn").click(handleBtnClick);
 
-checkWinCondition
 });
 
